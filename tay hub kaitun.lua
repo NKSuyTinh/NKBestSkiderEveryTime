@@ -276,35 +276,57 @@ local _keyExpireAt=nil   -- ms epoch tu server (nil = vinh vien)
 local _keyPlan="free"    -- plan cua key
 local function doVerify()
     if busy then return end
-    local key=KB.Text
-    if key=="" then
-        setStat("Vui long nhap key!",C.gold)
+    local key = KB.Text
+
+    if key == "" then
+        setStat("Vui long nhap key!", C.gold)
         tw(IR,{BackgroundColor3=Color3.fromRGB(18,12,2)},0.1)
-        task.delay(0.35,function() tw(IR,{BackgroundColor3=C.inp},0.2) end)
+        task.delay(0.35,function()
+            tw(IR,{BackgroundColor3=C.inp},0.2)
+        end)
         return
     end
-    busy=true; VB.Text="..."; VB.Active=false
-    setStat("Dang kiem tra...",C.gold)
 
-    local ok1,res=pcall(function()
-        local url=SERVER.."/api/verify?key="..HttpService:UrlEncode(key).."&hwid="..HttpService:UrlEncode(HWID)
-        return HttpService:JSONDecode(game:HttpGet(url,true))
-    end)
-    VB.Text="XAC MINH"; VB.Active=true
-    if not ok1 then setStat("Loi ket noi server!",C.red); flash(false); sErr:Play(); busy=false; return end
-    if not res.valid then setStat(res.reason or "Key khong hop le!",C.red); flash(false); sErr:Play(); busy=false; return end
+    busy = true
+    VB.Text = "..."
+    VB.Active = false
+    setStat("Dang kiem tra...", C.gold)
 
-    if res.activated==false then
-        setStat("Dang kich hoat...",C.gold)
-        local ok2,act=pcall(function()
-            local u=SERVER.."/api/activate?key="..HttpService:UrlEncode(key).."&hwid="..HttpService:UrlEncode(HWID)
-            return HttpService:JSONDecode(game:HttpGet(u,true))
-        end)
-        if not ok2 or (type(act)=="table" and not act.success) then
-            setStat((type(act)=="table" and act.reason) or "Kich hoat that bai",C.red)
-            flash(false); sErr:Play(); busy=false; return
-        end
+    task.wait(0.4)
+
+    -- KEY MOI
+    if key ~= "NamKhanhVN" then
+        VB.Text = "XAC MINH"
+        VB.Active = true
+        busy = false
+        setStat("Key khong hop le!", C.red)
+        flash(false)
+        sErr:Play()
+        return
     end
+
+    -- THANH CONG
+    _keyExpireAt = nil
+    _keyPlan = "vip"
+
+    VB.Text = "XAC MINH"
+    VB.Active = true
+    setStat("Key hop le! Dang tai...", C.grn)
+    flash(true)
+
+    sOK:Play()
+    task.delay(0.12,function()
+        sTing:Play()
+    end)
+
+    task.delay(0.6,function()
+        tw(Panel,{Position=UDim2.new(0.5,-W/2,0.4,-H/2)},0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In)
+        tw(Dim,{BackgroundTransparency=1},0.3)
+
+        task.delay(0.32,function()
+            SG:Destroy()
+
+            -- GIU NGUYEN PHAN SCRIPT CHINH O DAY
 
     -- Luu thong tin key
     _keyExpireAt = (res.expireAt and tonumber(res.expireAt)) or nil
