@@ -272,58 +272,7 @@ local function flash(ok)
 end
 
 local busy=false
-local _keyExpireAt=nil   -- ms epoch tu server (nil = vinh vien)
-local _keyPlan="free"    -- plan cua key
-local function doVerify()
-    if busy then return end
-    local key = KB.Text
 
-    if key == "" then
-        setStat("Vui long nhap key!", C.gold)
-        return
-    end
-
-    busy = true
-    VB.Text = "..."
-    VB.Active = false
-    setStat("Dang kiem tra...", C.gold)
-
-    task.wait(0.4)
-
-    if key ~= "NamKhanhVN" then
-        VB.Text = "XAC MINH"
-        VB.Active = true
-        busy = false
-        setStat("Key khong hop le!", C.red)
-        flash(false)
-        sErr:Play()
-        return
-    end
-
-    _keyExpireAt = nil
-    _keyPlan = "vip"
-
-    VB.Text = "XAC MINH"
-    VB.Active = true
-    setStat("Key hop le! Dang tai...", C.grn)
-    flash(true)
-
-    sOK:Play()
-    task.delay(0.12, function()
-        sTing:Play()
-    end)
-
-    task.delay(0.6, function()
-        tw(Panel, {
-            Position = UDim2.new(0.5, -W/2, 0.4, -H/2)
-        }, 0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
-
-        tw(Dim, {
-            BackgroundTransparency = 1
-        }, 0.3)
-
-        task.delay(0.32, function()
-            SG:Destroy()
 
             -- ===== COUNTDOWN WIDGET =====
             task.spawn(function()
