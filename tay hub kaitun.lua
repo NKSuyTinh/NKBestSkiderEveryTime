@@ -8,8 +8,8 @@ local HttpService  = game:GetService("HttpService")
 local SoundService = game:GetService("SoundService")
 local plr          = Players.LocalPlayer
 
-local SERVER  = "https://link4sub.com/ItRutr5UG"
-local DISCORD = "https://discord.gg/ph5CznY9PU"
+local SERVER  = "https://discord.gg/h9p5aJHP"
+local DISCORD = "https://discord.gg/h9p5aJHP"
 local GETKEY  = SERVER.."4"
 
 -- HWID
@@ -53,7 +53,7 @@ local C = {
 
 -- BUILD GUI
 local SG = Instance.new("ScreenGui")
-SG.Name="TàyHub_Gate"; SG.ResetOnSpawn=false
+SG.Name="NamKhanhVN_Gate"; SG.ResetOnSpawn=false
 SG.IgnoreGuiInset=true; SG.DisplayOrder=9999
 SG.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
 SG.Parent=plr:WaitForChild("PlayerGui")
@@ -115,7 +115,7 @@ Halo.ImageColor3=C.p3; Halo.ImageTransparency=0.55; Halo.ZIndex=3; Halo.Parent=P
 -- Title  y=84
 local Ttl=Instance.new("TextLabel")
 Ttl.Size=UDim2.new(1,-16,0,24); Ttl.Position=UDim2.new(0,8,0,84)
-Ttl.BackgroundTransparency=1; Ttl.Text="Tày Hub lấy 1 lần = vĩnh viễn"
+Ttl.BackgroundTransparency=1; Ttl.Text="NamKhanhVN Vua Skid"
 Ttl.TextColor3=C.p2; Ttl.TextSize=20; Ttl.Font=Enum.Font.GothamBold
 Ttl.ZIndex=4; Ttl.Parent=Panel
 
@@ -237,7 +237,7 @@ SPS.TextXAlignment=Enum.TextXAlignment.Left; SPS.ZIndex=5; SPS.Parent=SP
 -- Footer  y=352
 local Ft=Instance.new("TextLabel")
 Ft.Size=UDim2.new(1,0,0,14); Ft.Position=UDim2.new(0,0,0,382)
-Ft.BackgroundTransparency=1; Ft.Text="Tày Hub 1 lần = vĩnh viễn  v3.1"
+Ft.BackgroundTransparency=1; Ft.Text="Chung May Da Bi NamKhanhVN Skid"
 Ft.TextColor3=C.pD; Ft.TextSize=9; Ft.Font=Enum.Font.Gotham
 Ft.ZIndex=4; Ft.Parent=Panel
 
@@ -332,7 +332,7 @@ local function doVerify()
 
                 -- ScreenGui
                 local wSG = Instance.new("ScreenGui")
-                wSG.Name           = "TàyHubHub_KeyTimer"
+                wSG.Name           = "NamKhanhVn Ba Ro_KeyTimer"
                 wSG.ResetOnSpawn   = false
                 wSG.IgnoreGuiInset = true
                 wSG.DisplayOrder   = 8888
@@ -404,7 +404,7 @@ local function doVerify()
 
                 -- Tao noi dung hien thi
                 local function makeText(timeStr)
-                    return "Thoi gian con lai: "..timeStr.." | Script by Tày Hub 1 lần = vĩnh viễn"
+                    return "Thoi gian con lai: "..timeStr.." | Script Cua May Da Bi NK Skid Roi KK"
                 end
 
                 -- Tinh thoi gian
@@ -730,7 +730,7 @@ L_1_[15]["Size"] = UDim2["new"](1, -10, .5, 0)
 L_1_[15]["Position"] = UDim2["new"](.5, 0, 0, 2)
 L_1_[15]["AnchorPoint"] = Vector2["new"](.5, 0)
 L_1_[15]["BackgroundTransparency"] = 1
-L_1_[15]["Text"] = "TÀY Slayer Hub - Kaitun"
+L_1_[15]["Text"] = "NamKhanh Skid - Kaitun"
 L_1_[15]["TextColor3"] = Color3["fromRGB"](255, 0, 0)
 L_1_[15]["TextSize"] = 13
 L_1_[15]["Font"] = Enum["Font"]["GothamBold"]
