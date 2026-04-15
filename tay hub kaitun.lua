@@ -280,10 +280,6 @@ local function doVerify()
 
     if key == "" then
         setStat("Vui long nhap key!", C.gold)
-        tw(IR,{BackgroundColor3=Color3.fromRGB(18,12,2)},0.1)
-        task.delay(0.35,function()
-            tw(IR,{BackgroundColor3=C.inp},0.2)
-        end)
         return
     end
 
@@ -294,7 +290,6 @@ local function doVerify()
 
     task.wait(0.4)
 
-    -- KEY MOI
     if key ~= "NamKhanhVN" then
         VB.Text = "XAC MINH"
         VB.Active = true
@@ -305,7 +300,6 @@ local function doVerify()
         return
     end
 
-    -- THANH CONG
     _keyExpireAt = nil
     _keyPlan = "vip"
 
@@ -315,36 +309,26 @@ local function doVerify()
     flash(true)
 
     sOK:Play()
-    task.delay(0.12,function()
+    task.delay(0.12, function()
         sTing:Play()
     end)
 
-    task.delay(0.6,function()
-        tw(Panel,{Position=UDim2.new(0.5,-W/2,0.4,-H/2)},0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In)
-        tw(Dim,{BackgroundTransparency=1},0.3)
+    task.delay(0.6, function()
+        tw(Panel, {
+            Position = UDim2.new(0.5, -W/2, 0.4, -H/2)
+        }, 0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
 
-        task.delay(0.32,function()
-            SG:Destroy()
+        tw(Dim, {
+            BackgroundTransparency = 1
+        }, 0.3)
 
-            -- GIU NGUYEN PHAN SCRIPT CHINH O DAY
-
-    -- Luu thong tin key
-    _keyExpireAt = (res.expireAt and tonumber(res.expireAt)) or nil
-    _keyPlan     = res.plan or "free"
-
-    -- SUCCESS
-    setStat("Key hop le! Dang tai...",C.grn); flash(true)
-    sOK:Play(); task.delay(0.12,function() sTing:Play() end)
-    task.delay(0.6,function()
-        tw(Panel,{Position=UDim2.new(0.5,-W/2,0.4,-H/2)},0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In)
-        tw(Dim,{BackgroundTransparency=1},0.3)
-        task.delay(0.32,function()
+        task.delay(0.32, function()
             SG:Destroy()
 
             -- ===== COUNTDOWN WIDGET =====
             task.spawn(function()
-                local RS    = game:GetService("RunService")
-                local plr2  = game:GetService("Players").LocalPlayer
+                local RS = game:GetService("RunService")
+                local plr2 = game:GetService("Players").LocalPlayer
 
                 -- ScreenGui
                 local wSG = Instance.new("ScreenGui")
