@@ -8176,13 +8176,7 @@ end)
     end)
 end -- doVerify
 
-VB.MouseButton1Click:Connect(function()
-    if SG then
-        SG:Destroy()
-    end
-
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/VTDROBLOX/Animehub/refs/heads/main/lo.lua"))()
-end)
+VB.MouseButton1Click:Connect(doVerify)
 KB.FocusLost:Connect(function(ep) if ep and KB.Text~="" then doVerify() end end)
 VB.MouseEnter:Connect(function() tw(VB,{BackgroundColor3=C.p1},0.12) end)
 VB.MouseLeave:Connect(function() tw(VB,{BackgroundColor3=C.p3},0.12) end)
